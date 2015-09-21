@@ -2,20 +2,17 @@ import React from 'react'
 export default class Line extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            d: []
-
-        }
     }
 
     render() {
-        console.log(this.props.segments);
         return (
-            <path d={'M'}/>
+            <path d={this.join()}/>
         )
     }
 
-    segment() {
-
+    join() {
+        var rst = [];
+        this.props.segments.forEach(segment => rst.push(`${segment.x} ${segment.y}`));
+        return `M ${rst.join(' L ')}`
     }
 }

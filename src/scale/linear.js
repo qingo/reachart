@@ -4,15 +4,12 @@ export default class Linear extends Scale {
         super(config);
     }
 
-    toPixel(numbers) {
-        var rst = [];
+    toPixel(num) {
         var r0 = this.range[0],
             r1 = this.range[1],
-            d0 = this.range[0],
-            d1 = this.range[1];
-        numbers.forEach(num => {
-            rst.push((d1 - d0) * num / (r1 - r0) - d0)
-        });
-        return rst;
+            d0 = this.domain[0],
+            d1 = this.domain[1];
+        var rst = (r1 - r0) * num / (d1 - d0) - r0;
+        return (r1 - r0) * num / (d1 - d0) - r0;
     }
 }
